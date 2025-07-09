@@ -1,0 +1,81 @@
+TPS 1
+Dylan l.
+Ethan w.
+Diana m.
+Jordan t.
+
+TPS 2
+1.  a.you can open more than 1 terminal at a time
+    b.to improve efficency so you can run several tasks simultaneously
+2.you can type ls to see contents
+3.cd Desktop
+4.mkdir CSE31
+
+TPS 3
+3.gcc main.c -o main
+4.It enters a new line without any errors
+5.-c tells gcc to compile source files into object files
+6.-g enables debugging information so a debugger can be used
+7.mv main cselab1
+8.cannot find main: No such file or directory
+9../main
+
+TPS 4
+int isEven(n){
+    int sum
+    if n <= 0{
+        n *= -1
+    }
+
+    while n > 0{
+        sum += n % 10
+        n /= 10
+    }
+
+    return sum % 2 == 0
+}
+
+int main(){
+    int sum_even = 0
+    int sum_odd = 0
+    int evens = 0
+    int odds = 0
+    int n
+    int i = 1
+    while n != 0{
+        if i % 10 == 1 && i % 100 != 11{
+            printf Enter the %dst value
+        }
+        if i % 10 == 2 && i % 100 != 12{
+            printf Enter the %dnd value
+        }
+        if i % 10 == 3 && i % 100 != 13{
+            printf Enter the %drd value
+        }
+        else {
+            printf Enter the %dth value
+        }
+        scanf %d &n
+        if n != 0{
+            if isEven(n){
+                sum_even += n
+                evens++
+            } else {
+                sum_odd += new
+                odds++
+            }
+        }
+        i++   
+    }
+    double avg_even = sum_even / evens
+    double avg_odd = sum_odd / odds
+    if evens != 0 {
+        printf Averge of evens is %d avg_even
+    }
+    if odds != 0 {
+        printf Averge of evens is %d avg_odd
+    }
+    if evens == 0 && odds == 0{
+        printf No average
+    }
+}
