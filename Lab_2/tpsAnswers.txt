@@ -1,0 +1,28 @@
+Justin Luis Guevarra
+Nicholas Force
+Jordan Teoh
+Devin Tan
+
+TPS 2
+1:  -g flag to compile for debug, -o to rename
+    If I want to compile punishment.c in a way that allows me to name .exe "punish" AND allow the option to debug using GDB, I use the command: "gcc -g -o punish punishment.c"
+    The "-g" flag enables debugging options, and the "-o" flag allows me to name the executable that is generated.
+2.  To load "punishment.c" into GDB, I can just use the command: "gdb ./punish", since "punish" is the name of the compiled "punishment.c"
+3.  Once it is loaded in, I can run the program with the command: "run"
+4.  Breakpoints are literally points in specific lines of code that pauses or "breaks" program execution temporarily so that you can look at the current "state" that the program is 
+    in (e.g. if there is a variable that is constantly updated and there is a bug that occurs due to the variable, it would be a good idea to add breakpoints to where the variable 
+    is being reassigned)
+    To set up a breakpoint at a specific line, you could use the command (while in GDB): "break punish:line," where "line" would be replaced with the specific line of code you 
+    want to add a breakpoint to.
+5.  Once the program stops at the breakpoint, I can continue running the program line by line using the command: "next" (while still in GDB).
+6.  While running "punish" line by line, you can see the value of a variable by using the command: "print var_name," where "var_name" is the name of the variable you want to see the
+    value of.
+7.  To let the program finish running in its completion (and NOT line by line), I can just use the command: "continue".
+8.  To exit out of GDB, you can use the command: "quit" or you can also use Ctrl+C if the program is still running.
+
+TPS 3
+1.  4 variables were declared, with 2 being pointers.
+2.  x, y, and arr[10] were garbage values
+    x was usually a low number and y a very high number. arr[10] was always the same as y
+3.  x, y, and arr[10] can be prevented from having unexpected values by being initialized to certain values
+8.  Yes, it matches the address of arr[0], so it makes sense.

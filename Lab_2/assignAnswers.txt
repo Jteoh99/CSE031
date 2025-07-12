@@ -1,0 +1,10 @@
+Assignment 1:
+1.  Line 25 caused the segmentation fault
+2.  replace input with &input
+3.  Sum variable was being passed as a pointer but value was being reset incorrectly inside read_values()
+4.  Ensure that sum is only updated within the loop and not reset inside read_values()
+
+Assignment 2:
+1.  There is an extra g appended to the end of the resulting string
+2.  The new str1 and str2 have overwritten some of the previous strings, but left the rest of it.
+3.  The output is not expected because the input size exceeds the allocated space for the strings, causing a buffer overflow.
