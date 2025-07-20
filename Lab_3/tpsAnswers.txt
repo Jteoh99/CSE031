@@ -1,0 +1,13 @@
+TPS 1
+1:  Static: Global Variable Storage
+    Stack: Local Variable Storage
+    Heap: Dynamic Storage
+2:  a.  3 variables are declared
+    b.  2 of them are pointers
+        ptr points to an int
+        handle points to an int* (pointer to a pointer to an integer)
+
+TPS 2
+1.  The program defines a linked list node structure and creates one node on the heap
+3.  Members of the node structure are stored sequentially in memory
+    The pointer holds the address of the memory location where the node structure is stored
