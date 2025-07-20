@@ -1,0 +1,86 @@
+TPS 1
+4.  A machine instruction contains 32 bits
+5.  R-Type (Register Type)
+        Used for instructions that operate on registers only
+        add $t0, $t1, $t2
+        sub $s1, $s2, $s3
+    I-Type (Immediate Type)
+        Used for instructions that involve immediates or memory access.
+        addi $t0, $t1, 10
+        lw $s0, 4($sp)
+    J-Type (Jump Type)
+        Used for jump instructions that specify large target addresses.
+        j 0x00400020
+        jal func
+6.  addi $s0, $zero, 25
+    a.  I-Type
+        4 fields
+        opcode (6 bits) — specifies the operation (addi)
+        rs (5 bits) — the source register ($zero)
+        rt (5 bits) — the destination register ($s0)
+        immediate (16 bits) — the constant value (25)
+    b.  opcode of addi is 0x08
+        rs is $zero
+            0x00
+        rt is $s0
+            0x10
+        immediate value is 0x0019 in hex
+    c.  0x08 0x00 0x10 0x0019
+        001000 00000 10000 0000000000011001
+        0010 0000 0000 0001 0000 0000 0000 0001 1001
+        2 0 1 0 0 0 1 9
+        0x20100019
+7.  slt $t0, $s1, $s0
+    a.  0x0230402a
+        0000 0010 0011 0000 0100 0000 0010 1010
+    b.  R-Type
+        opcode 000000
+        6 fields [opcode (6), rs (5), rt (5), rd (5), shamt (5), funct (6)]
+    c.  000000 10001 10000 01000 00000 101010
+        0x00 0x11 0x10 0x08 0x00 0x2a
+    d.  101010 > 42 > slt
+        rs: 10001 > 17 > $s1
+        rt: 10000 > 16 > $s0
+        rd: 01000 > 08 > $t0
+    e.  slt $t0, $s1, $s0
+        yes
+8.  bne $t0, $zero, LESS
+    a.  I-Type (Branch)
+    b.  bne 0x05
+        $t0 0x08
+        $zero 0x00
+    c.  LESS
+        0x0040001C
+    d.  We do not put the address in the immediate field. Instead, we put a relative offset (how many instructions to jump from next instruction)
+        MIPS computes the branch by finding the destination address relative to the label address
+    e.  Current instruction address: 0x00400014
+        Next instruction (PC + 4): 0x00400018
+        Target (LESS) address: 0x0040001C
+        PC-relative address = (label address - (PC + 4)) / 4
+        = (0x04) / 4
+        = 1
+        0x0001
+    f.  opcode (6), rs (5), rt (5), immediate (16)
+        000101 01000 00000 0000000000000001
+        0001 0101 0000 0000 0000 0000 0000 0001
+        0x15000001
+        yes
+9.  j GREQ
+    a.  J-Type
+        2 fields [opcode (6), address (26)]
+    b.  000010
+    c.  GREQ
+        0x00400030
+    d.  Address field is 26 bits
+        The last 2 bits of every instruction address are always 00, meaning we don’t need to store them.
+        Final address = (26-bit address field << 2) inserted into upper 4 bits of PC
+        address field = target_address >> 2
+        0x00400030 >> 2 = 0x0010000C
+        Binary: 0000 0000 0000 0100 0000 0000 0011 00
+        Drop the upper 6 bits to get 26 bits:
+        000100000000000000001100
+    e.  opcode (6), address (26)
+        000010 000100000000000000001100
+        0000 1000 0001 0000 0000 0000 0000 1100
+        0x0840000C
+        yes
