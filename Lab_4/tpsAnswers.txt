@@ -1,0 +1,15 @@
+TPS 1
+1.  The expected printing value is 2
+2.  The expected printing value is 44434241
+4.  four_ints[1] was never modified so it still holds the value of 2
+5.  a.  Only 1 array was allocated (four_ints[4])
+    b.  Yes, four_ints and four_c are pointing to the same location
+6.  The difference between consecutive elements is 4 bytes, or an int
+8.  The difference between consecutive elements is 1 byte, or a char
+10. A char* pointer moves through memory byte by byte
+    An int* pointer moves through memory 4 bytes at a time
+
+TPS 2
+1.  This line dynamically allocates memory for a 2D array using a double pointer (int **arr).
+2.  We use pointer indexing arr[i]
+4.  We need to pass the size as an argument in order to prevent out-of-bounds access
